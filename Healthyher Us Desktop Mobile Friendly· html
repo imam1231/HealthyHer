@@ -1,0 +1,64 @@
+<!-- ================== index.html ================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthyHer — Home</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">HealthyHer</a>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav id="main-nav" class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Health, Fitness & Lifestyle Tips</h1>
+      <p>Daily health guides, workouts, recipes & motivation for your lifestyle.</p>
+    </section>
+
+    <section class="content-grid">
+      <article class="card">
+        <h2>New Article: Healthy Diet Tips</h2>
+        <p>Quick summary — read full blog for details.</p>
+        <a class="btn" href="blog.html">Read More</a>
+      </article>
+
+      <aside class="ad-box">
+        <!-- AD PLACEHOLDER: Top sidebar ad -->
+        <div class="ad-sample">Ad space — replace with ad code</div>
+      </aside>
+    </section>
+
+    <section class="latest-posts">
+      <h3>Latest Posts</h3>
+      <ul>
+        <li><a href="blog.html">How to Optimize Your Morning Routine</a></li>
+        <li><a href="blog.html">Easy Home Workouts</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 HealthyHer — All rights reserved.</p>
+      <div class="footer-ad">
+        <!-- AD PLACEHOLDER: Footer responsive ad -->
+        <div class="ad-sample">Footer Ad space</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/scripts.js"></script>
+</body>
+</html>
