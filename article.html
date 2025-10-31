@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthy Breakfast Guide</title>
+  <style>
+    /* General Styles */
+    body { font-family: Arial, sans-serif; margin:0; background:#fdfdfd; color:#222; line-height:1.6; }
+    a { text-decoration: none; }
+    h1,h2,h3 { margin-top:1em; }
+    
+    /* Header */
+    header { background:#4CAF50; color:#fff; padding:25px 10%; text-align:center; }
+    header h1 { font-size:2rem; }
+
+    /* Navigation */
+    nav { background:#333; padding:10px 10%; display:flex; flex-wrap:wrap; }
+    nav a { color:#fff; margin-right:15px; padding:6px 10px; border-radius:4px; font-size:15px; }
+    nav a:hover { background:#ddd; color:#000; }
+
+    /* Main Content */
+    main { padding:25px 10%; max-width:1200px; margin:auto; }
+    article { background:#fff; padding:25px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    ul { padding-left:20px; margin-bottom:15px; }
+    p { margin-bottom:15px; }
+
+    /* Buttons */
+    .buttons { margin-top:25px; display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { background:#4CAF50; color:#fff; border:none; padding:12px 20px; border-radius:6px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-size:15px; }
+    .btn.secondary { background:#1976d2; }
+    .btn:hover { opacity:0.9; }
+
+    /* Footer */
+    footer { text-align:center; padding:20px; background:#333; color:#fff; margin-top:30px; }
+
+    /* Modal Styles */
+    .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; align-items:center; justify-content:center; z-index:9999; }
+    .modal { background:#fff; width:90%; max-width:720px; border-radius:12px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.2); max-height:90vh; overflow-y:auto; }
+    .crypto-row { display:flex; gap:15px; align-items:center; border:1px solid #eee; padding:15px; border-radius:10px; margin-bottom:15px; flex-wrap:wrap; }
+    .crypto-info { flex:1; min-width:0; }
+    .addr { font-family:monospace; word-break:break-all; background:#f7f7f7; padding:10px; border-radius:6px; margin-top:8px; display:block; }
+    .small { font-size:13px; color:#555; margin-top:6px; }
+    .qr { width:100px; height:100px; border:1px solid #eee; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .copy-btn, .close-btn { border:none; border-radius:6px; padding:8px 12px; cursor:pointer; margin-top:8px; font-size:14px; }
+    .copy-btn { background:#333; color:#fff; }
+    .close-btn { background:#e0e0e0; color:#111; margin-left:0; }
+    .note { background:#fff3cd; border-left:4px solid #ffe082; padding:12px; border-radius:6px; font-size:14px; margin-top:12px; color:#6b4f00; }
+
+    /* Responsive Styles */
+    @media (max-width:768px){
+      header, main, nav { padding-left:6%; padding-right:6%; }
+      .crypto-row { flex-direction:column; align-items:flex-start; }
+      .qr { width:80px; height:80px; margin-top:8px; }
+      nav a { margin-bottom:8px; }
+      .btn { flex:1; justify-content:center; }
+    }
+    @media (max-width:480px){
+      header h1 { font-size:1.5rem; }
+      .btn { font-size:14px; padding:10px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Healthy Breakfast Guide</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="article.html">Articles</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main>
+  <article>
+    <h2>Morning</h2>
+    <p>Breakfast is often called the most important meal of the day—and for a good reason. Eating a healthy breakfast not only fuels your body but also improves focus, supports metabolism, and boosts overall well-being. Choosing the right foods in the morning can set the tone for your entire day, while the wrong foods can leave you tired, sluggish, and craving sugar.</p>
+
+    <p>This guide will help you understand what to eat and what to avoid for a healthy breakfast, along with practical tips for busy mornings.</p>
+
+    <h2>Why Breakfast Matters</h2>
+    <p>Eating a nutritious breakfast kickstarts your metabolism after a night of fasting. It helps regulate blood sugar levels, supports cognitive function, and reduces unhealthy snacking later in the day. Studies show that people who eat a balanced breakfast tend to maintain healthier weights and have more energy throughout the day.</p>
+
+    <h2>Foods You Should Eat in the Morning</h2>
+    <h3>1. Whole Grains</h3>
+    <p>Examples: Oatmeal, whole-grain bread, whole-grain cereals. Whole grains are rich in fiber, which helps you feel full longer, supports digestion, and maintains steady blood sugar levels. A bowl of oatmeal topped with fruits or a slice of whole-grain toast with avocado is a great way to start the day.</p>
+
+    <h3>2. Protein-Rich Foods</h3>
+    <p>Examples: Eggs, Greek yogurt, cottage cheese, nut butter. Protein is essential for muscle repair and helps you stay satisfied for hours. An egg omelet with vegetables or a Greek yogurt parfait with nuts can keep you energized until lunch.</p>
+
+    <h3>3. Fresh Fruits and Vegetables</h3>
+    <p>Examples: Berries, bananas, spinach, avocado. Fruits and vegetables are packed with vitamins, minerals, and antioxidants. Adding them to breakfast boosts your immune system, promotes digestion, and reduces inflammation.</p>
+
+    <h3>4. Healthy Fats</h3>
+    <p>Examples: Nuts, seeds, avocado, olive oil. Healthy fats improve brain function, support hormone balance, and keep you feeling full. A handful of almonds, chia seeds in your oatmeal, or avocado on toast are excellent options.</p>
+
+    <h3>5. Hydrating Drinks</h3>
+    <p>Examples: Water, herbal teas, unsweetened milk. Hydration is important after hours of sleep. Starting your day with water or herbal tea supports digestion and overall energy.</p>
+
+    <h2>Foods to Avoid in the Morning</h2>
+    <ul>
+      <li>Sugary cereals</li>
+      <li>Pastries and donuts</li>
+      <li>Processed meats</li>
+      <li>Sweetened drinks</li>
+      <li>Fried foods</li>
+    </ul>
+
+    <h2>Tips for a Healthy, Energy-Boosting Breakfast</h2>
+    <ul>
+      <li>Plan ahead: Prepare overnight oats, chopped fruits, or boiled eggs the night before.</li>
+      <li>Balance your plate: Include protein, fiber, and healthy fats.</li>
+      <li>Control portions: Avoid overeating or eating too little.</li>
+      <li>Stay hydrated: Drink water or herbal tea first thing.</li>
+      <li>Limit added sugar: Keep an eye on hidden sugars.</li>
+      <li>Include variety: Rotate different fruits, grains, and proteins.</li>
+    </ul>
+
+    <h2>Quick and Healthy Breakfast Ideas</h2>
+    <ul>
+      <li>Greek Yogurt Parfait: Greek yogurt + berries + chia seeds + honey</li>
+      <li>Avocado Toast with Egg: Whole-grain toast + avocado + boiled/poached egg</li>
+      <li>Protein Smoothie: Spinach + banana + almond milk + protein powder</li>
+      <li>Overnight Oats: Oats soaked overnight with almond milk, nuts, fresh fruit</li>
+      <li>Vegetable Omelet: Eggs + spinach + tomatoes + bell peppers</li>
+    </ul>
+
+    <p>Eating the right breakfast isn’t just about filling your stomach—it’s about giving your body the nutrients it needs to perform at its best. By choosing whole grains, proteins, fruits, vegetables, and healthy fats while avoiding sugary, fried, and processed foods, you can improve your energy, focus, and overall health.</p>
+
+    <p>Start your mornings smart, and your body—and mind—will thank you!</p>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button id="likeBtn" class="btn">👍 Like (<span id="likeCount">0</span>)</button>
+      <a class="btn secondary" id="shareFB" href="#" target="_blank">🔗 Share</a>
+      <button class="btn" id="donateOpen">💖 Donate (Crypto)</button>
+    </div>
+  </article>
+</main>
+
+<!-- Modal for Crypto Donation -->
+<div id="modalBackdrop" class="modal-backdrop">
+  <div class="modal">
+    <h3>Donate — Crypto (Binance)</h3>
+
+    <div id="cryptoList">
+      <div class="crypto-row">
+        <div class="crypto-info">
+          <strong>Bitcoin (BTC)</strong>
+          <div class="addr" id="addr-btc">1BoatSLRHtKNngkdXEeobR76b53LETtpyT</div>
+        </div>
+        <div class="qr"><img id="qr-btc" src="" alt="BTC QR"></div>
+        <button class="copy-btn" data-target="addr-btc">Copy</button>
+      </div>
+      <div class="crypto-row">
+        <div class="crypto-info">
+          <strong>USDT — TRC20</strong>
+          <div class="addr" id="addr-usdt">TNexampleUSDTaddressForTRC20xxxxxxxx</div>
+        </div>
+        <div class="qr"><img id="qr-usdt" src="" alt="USDT QR"></div>
+        <button class="copy-btn" data-target="addr-usdt">Copy</button>
+      </div>
+      <div class="crypto-row">
+        <div class="crypto-info">
+          <strong>BNB</strong>
+          <div class="addr" id="addr-bnb">bnb1examplebnbaddressxxxxxxxxxxxxxxxxx</div>
+        </div>
+        <div class="qr"><img id="qr-bnb" src="" alt="BNB QR"></div>
+        <button class="copy-btn" data-target="addr-bnb">Copy</button>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Note:</strong> Replace addresses above with your actual Binance wallet addresses. Ensure the correct network (TRC20/ERC20/BEP20) for transfers.
+    </div>
+
+    <div style="text-align:right; margin-top:12px;">
+      <button class="close-btn" id="modalClose">Close</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 YourWebsiteName. All rights reserved.
+</footer>
+
+<script>
+  // Like Button
+  const likeBtn = document.getElementById('likeBtn');
+  const likeCount = document.getElementById('likeCount');
+  likeBtn.addEventListener('click', ()=>{ likeCount.textContent = parseInt(likeCount.textContent)+1; });
+
+  // Share Button
+  const shareFB = document.getElementById('shareFB');
+  shareFB.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(location.href) + "&quote=" + encodeURIComponent("Check out this healthy breakfast guide!");
+
+  // Donate Modal
+  const modalBackdrop = document.getElementById('modalBackdrop');
+  document.getElementById('donateOpen').addEventListener('click',()=>{ modalBackdrop.style.display="flex"; });
+  document.getElementById('modalClose').addEventListener('click',()=>{ modalBackdrop.style.display="none"; });
+  modalBackdrop.addEventListener('click',e=>{ if(e.target===modalBackdrop) modalBackdrop.style.display="none"; });
+
+  // Copy Addresses
+  document.querySelectorAll('.copy-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const text=document.getElementById(btn.getAttribute('data-target')).textContent.trim();
+      navigator.clipboard.writeText(text).then(()=>{ btn.textContent="Copied ✓"; setTimeout(()=>btn.textContent="Copy",1600); });
+    });
+  });
+
+  // Generate QR codes
+  function qrUrl(data){ return "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl="+encodeURIComponent(data); }
+  document.getElementById('qr-btc').src = qrUrl("bitcoin:1BoatSLRHtKNngkdXEeobR76b53LETtpyT");
+  document.getElementById('qr-usdt').src = qrUrl("USDT:TNexampleUSDTaddressForTRC20xxxxxxxx");
+  document.getElementById('qr-bnb').src = qrUrl("BNB:bnb1examplebnbaddressxxxxxxxxxxxxxxxxx");
+</script>
+
+</body>
+</html>
