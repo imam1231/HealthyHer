@@ -36,34 +36,27 @@
     body {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      min-height: 100vh;
       background: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-      background-attachment: fixed;
       color: #0f172a;
       line-height: 1.6;
-      transition: background 1s ease;
     }
 
     .overlay {
-      background: rgba(255, 255, 255, 0.9);
       flex: 1;
+      background: rgba(255, 255, 255, 0.92);
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       min-height: 100vh;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      overflow-y: auto;
     }
 
     .container {
+      width: 100%;
       max-width: 1200px;
-      margin: auto;
-      padding: 40px;
-      flex: 1;
+      padding: 60px 40px;
     }
 
     header {
@@ -73,11 +66,11 @@
       margin-bottom: 30px;
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
+      padding: 20px 0;
       border-radius: 12px;
-      padding: 10px 20px;
-      z-index: 999;
+      z-index: 10;
     }
 
     .brand {
@@ -104,12 +97,15 @@
       color: var(--muted);
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.2s, transform 0.3s;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
       color: var(--accent);
-      transform: scale(1.05);
+    }
+
+    main {
+      flex: 1;
     }
 
     .hero {
@@ -119,12 +115,12 @@
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
       text-align: center;
       margin-bottom: 40px;
-      animation: fadeIn 1.2s ease-in-out;
     }
 
     .hero h1 {
-      font-size: 38px;
+      font-size: 40px;
       color: var(--accent);
+      font-weight: 800;
     }
 
     .hero p {
@@ -133,6 +129,7 @@
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      font-size: 17px;
     }
 
     .stats {
@@ -149,18 +146,17 @@
       border-radius: 10px;
       min-width: 140px;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
 
     .stat:hover {
-      transform: translateY(-5px);
+      transform: scale(1.05);
     }
 
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
-      margin-bottom: 50px;
     }
 
     .card {
@@ -168,12 +164,11 @@
       padding: 28px;
       border-radius: 14px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
     }
 
     .team-list {
@@ -210,7 +205,7 @@
       color: #fff;
       text-decoration: none;
       font-weight: 700;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
       margin-top: 20px;
     }
 
@@ -224,10 +219,10 @@
       color: #334155;
       font-size: 15px;
       padding: 20px 0;
-      margin-top: auto;
       background: rgba(255, 255, 255, 0.85);
       border-top: 1px solid rgba(0, 0, 0, 0.05);
       backdrop-filter: blur(5px);
+      margin-top: auto;
     }
 
     footer p {
@@ -348,6 +343,5 @@
   </footer>
 </body>
 </html>
-
 
 
