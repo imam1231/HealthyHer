@@ -1,284 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog — HealthyHer</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — HealthyHer</title>
 
-  <style>
-    /* ===== Reset & Base ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      scroll-behavior: smooth;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.55);
-      z-index: -1;
-    }
-    a { text-decoration: none; color: inherit; }
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; font-family:'Poppins',sans-serif; scroll-behavior:smooth; color:#fff; }
+body {
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+  background-size: cover;
+  display:flex; flex-direction:column;
+}
+body::before {
+  content:'';
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.55);
+  z-index:-1;
+}
+a { text-decoration:none; color:inherit; }
 
-    /* ===== Header ===== */
-    .site-header {
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px);
-      position: sticky; top: 0; z-index: 100;
-      padding: 1rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .site-header .container {
-      max-width: 1100px;
-      margin: auto;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 1.5rem;
-    }
-    .brand { font-weight: 700; font-size: 1.6rem; color: #00d4ff; }
-    .main-nav { display: flex; gap: 1.5rem; }
-    .main-nav a { color: #fff; font-weight: 500; transition: color 0.3s ease; }
-    .main-nav a.active::after { content: ''; display: block; width: 100%; height: 2px; background: #00d4ff; margin-top: 3px; border-radius: 2px; }
-    .main-nav a:hover { color: #00d4ff; }
-    .nav-toggle { display: none; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: #fff; }
+/* Header */
+.site-header {
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+  position: sticky; top:0; z-index:100; padding:1rem 0;
+}
+.site-header .container {
+  max-width:1100px; margin:auto;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:0 1.5rem;
+}
+.brand { font-weight:700; font-size:1.6rem; color:#00d4ff; }
+.main-nav { display:flex; gap:1.5rem; }
+.main-nav a { color:#fff; font-weight:500; transition:0.3s; position:relative; }
+.main-nav a.active::after { content:''; display:block; width:100%; height:2px; background:#00d4ff; margin-top:3px; border-radius:2px; }
+.main-nav a:hover { color:#00d4ff; }
+.nav-toggle { display:none; font-size:1.5rem; background:none; border:none; cursor:pointer; color:#fff; }
 
-    /* ===== Main ===== */
-    main.container {
-      max-width: 1100px;
-      margin: 5rem auto 3rem;
-      padding: 0 1.5rem;
-    }
+/* Main Fullscreen */
+main.container {
+  flex:1; display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  text-align:center; padding:2rem 1.5rem; width:100%;
+  max-width:900px; margin:0 auto;
+}
+h1 { font-size:3rem; color:#00d4ff; margin-bottom:1rem; text-shadow:0 2px 6px rgba(0,0,0,0.5); opacity:0; transform:translateY(30px); transition:all 1s ease; }
+p { color:#f0f0f0; font-size:1.1rem; line-height:1.8; margin-bottom:2rem; opacity:0; transform:translateY(20px); transition:all 1s ease 0.2s; }
+.section-separator { height:2px; width:80px; margin:1rem auto 2rem; background:linear-gradient(to right,#00d4ff,#00ffea); border-radius:2px; opacity:0; transform:scaleX(0); transition:all 0.8s ease; }
 
-    h1 {
-      font-size: 3rem; color: #00d4ff; margin-bottom: 1.5rem;
-      text-align: center; text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-      opacity: 0; transform: translateY(30px); transition: all 1s ease;
-    }
+/* Blog Posts */
+.blog-post {
+  background: rgba(0,0,0,0.6); padding:2rem; border-radius:12px; margin-bottom:2rem; width:100%;
+  box-shadow:0 8px 20px rgba(0,0,0,0.5); opacity:0; transform:translateY(20px); transition:all 1s ease;
+}
+.blog-post:hover { transform:translateY(-5px); box-shadow:0 12px 24px rgba(0,0,0,0.6); }
+.blog-post h2 { color:#00d4ff; margin-bottom:0.5rem; }
+.blog-post p { margin-bottom:1rem; font-size:1rem; color:#f0f0f0; }
 
-    /* ===== Category Filter Buttons ===== */
-    .filter-buttons {
-      display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      padding: 0.5rem 1rem; border: 2px solid #00d4ff; border-radius: 25px;
-      background: transparent; color: #00d4ff; cursor: pointer; font-weight: 500;
-      transition: all 0.3s ease;
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: #00d4ff; color: #000;
-    }
+/* Button */
+.btn { display:inline-block; padding:0.6rem 1.2rem; margin-top:1rem; font-weight:600; color:#fff; background:#00d4ff; border-radius:25px; transition: background 0.3s ease, transform 0.2s ease; }
+.btn:hover { background:#00ffea; transform:translateY(-2px); }
 
-    /* ===== Blog Cards ===== */
-    .blog-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .post {
-      background: rgba(0,0,0,0.6);
-      padding: 2rem; border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0; transform: translateY(20px);
-    }
-    .post:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.6);
-    }
-    .post h2 { color: #00d4ff; margin-bottom: 0.5rem; }
-    .post p { color: #f0f0f0; margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.6; }
-    .btn {
-      display: inline-block; padding: 0.6rem 1.2rem;
-      font-weight: 600; color: #fff; background: #00d4ff;
-      border-radius: 25px; transition: background 0.3s ease, transform 0.2s ease;
-    }
-    .btn:hover { background: #00ffea; transform: translateY(-2px); }
+/* Footer */
+.site-footer { background: rgba(0,0,0,0.7); color:#fff; text-align:center; padding:2rem 1rem; opacity:0; transform:translateY(20px); transition:all 1s ease; }
+.footer-ad { margin-top:0.8rem; font-size:0.9rem; opacity:0.8; }
 
-    /* ===== Pagination ===== */
-    .pagination {
-      display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;
-    }
-    .page-btn {
-      padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #00d4ff;
-      background: transparent; color: #00d4ff; cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .page-btn.active, .page-btn:hover { background: #00d4ff; color: #000; }
+/* Responsive */
+@media(max-width:768px){
+  .main-nav { display:none; flex-direction:column; background: rgba(0,0,0,0.9); position:absolute; top:70px; right:0; width:200px; padding:1rem 0; }
+  .main-nav.active { display:flex; }
+  .nav-toggle { display:block; }
+  h1 { font-size:2.2rem; }
+  p { font-size:1rem; }
+  .blog-post { padding:1.5rem; }
+}
 
-    /* ===== Ads Box ===== */
-    .ad-box {
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px dashed #00d4ff; border-radius: 8px;
-      padding: 1.5rem; margin: 3rem 0; font-style: italic; color: #ddd;
-      text-align: center;
-      opacity: 0; transform: translateY(20px);
-    }
-
-    /* ===== Footer ===== */
-    .site-footer {
-      background: rgba(0,0,0,0.7); color: #fff;
-      text-align: center; padding: 2rem 1rem;
-      opacity: 0; transform: translateY(20px);
-    }
-    .footer-ad { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.8; }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      .main-nav {
-        display: none; flex-direction: column; background: rgba(0,0,0,0.9);
-        position: absolute; top: 70px; right: 0; width: 200px; padding: 1rem 0;
-      }
-      .main-nav.active { display: flex; }
-      .nav-toggle { display: block; }
-      h1 { font-size: 2.2rem; }
-      .post { padding: 1.5rem; }
-    }
-
-    /* ===== Animation Active Class ===== */
-    .fade-in { opacity: 1 !important; transform: translateY(0) !important; }
-  </style>
+/* Animation */
+.fade-in { opacity:1 !important; transform:translateY(0) scaleX(1) !important; }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a class="brand" href="index.html">HealthyHer</a>
-      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
-      <nav id="main-nav" class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="blog.html" class="active">Blog</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="container">
-    <h1 class="animate">Blog</h1>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">HealthyHer</a>
+    <button id="nav-toggle" class="nav-toggle">☰</button>
+    <nav id="main-nav" class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- Category Filter Buttons -->
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-category="all">All</button>
-      <button class="filter-btn" data-category="fitness">Fitness</button>
-      <button class="filter-btn" data-category="nutrition">Nutrition</button>
-      <button class="filter-btn" data-category="lifestyle">Lifestyle</button>
-    </div>
+<main class="container">
+  <h1 class="animate">Our Blog</h1>
+  <div class="section-separator animate"></div>
+  <p class="animate">Stay updated with the latest tips, guides, and stories on health, fitness, and lifestyle from our experts.</p>
 
-    <!-- Blog Posts -->
-    <section class="blog-list">
-      <article class="post animate" data-category="fitness">
-        <h2>How to Optimize Your Morning Routine</h2>
-        <p>Quick tips to start your day energized and focused.</p>
-        <a href="morning-breakfast.html" class="btn">Read More</a>
-      </article>
+  <section class="blog-post animate">
+    <h2>5 Tips for a Healthier Morning Routine</h2>
+    <p>Start your day right with these 5 practical tips that improve energy, focus, and wellbeing.</p>
+    <a href="#" class="btn">Read More</a>
+  </section>
 
-      <article class="post animate" data-category="fitness">
-        <h2>Easy Home Workouts</h2>
-        <p>Simple exercises you can do at home without equipment.</p>
-        <a href="#" class="btn">Read More</a>
-      </article>
+  <section class="blog-post animate">
+    <h2>Nutrition Myths Busted</h2>
+    <p>Learn the truth behind common nutrition myths and how to make better choices for your health.</p>
+    <a href="#" class="btn">Read More</a>
+  </section>
 
-      <article class="post animate" data-category="nutrition">
-        <h2>Healthy Eating Habits</h2>
-        <p>Guidance on meal planning and nutrition for busy lifestyles.</p>
-        <a href="#" class="btn">Read More</a>
-      </article>
+  <section class="blog-post animate">
+    <h2>Workouts You Can Do at Home</h2>
+    <p>No gym? No problem! These exercises will help you stay fit in the comfort of your home.</p>
+    <a href="#" class="btn">Read More</a>
+  </section>
+</main>
 
-      <article class="post animate" data-category="lifestyle">
-        <h2>Mindful Living Tips</h2>
-        <p>Simple ways to improve daily mindfulness and reduce stress.</p>
-        <a href="#" class="btn">Read More</a>
-      </article>
+<footer class="site-footer animate">
+  <p>© 2025 HealthyHer — Empowering Health & Happiness</p>
+  <div class="footer-ad">Footer Ad Space</div>
+</footer>
 
-      <article class="post animate" data-category="nutrition">
-        <h2>Superfoods for Energy</h2>
-        <p>Boost your energy levels with nutrient-packed superfoods.</p>
-        <a href="#" class="btn">Read More</a>
-      </article>
-    </section>
+<script>
+const navToggle = document.getElementById('nav-toggle');
+const mainNav = document.getElementById('main-nav');
+navToggle.addEventListener('click', ()=> mainNav.classList.toggle('active'));
 
-    <!-- Pagination -->
-    <div class="pagination"></div>
+const faders = document.querySelectorAll('.animate');
+const appearOptions = { threshold:0.2, rootMargin:"0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('fade-in');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader => appearOnScroll.observe(fader));
+</script>
 
-    <aside class="ad-box animate">
-      <div class="ad-sample">Ad space — replace with ad code</div>
-    </aside>
-  </main>
-
-  <footer class="site-footer animate">
-    <p>© 2025 HealthyHer</p>
-    <div class="footer-ad">Footer Ad space</div>
-  </footer>
-
-  <script>
-    // ===== Mobile Menu Toggle =====
-    const navToggle = document.getElementById('nav-toggle');
-    const mainNav = document.getElementById('main-nav');
-    navToggle.addEventListener('click', () => { mainNav.classList.toggle('active'); });
-
-    // ===== Scroll Animation =====
-    const faders = document.querySelectorAll('.animate');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer){
-      entries.forEach(entry => {
-        if(!entry.isIntersecting) return;
-        entry.target.classList.add('fade-in');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => appearOnScroll.observe(fader));
-
-    // ===== Category Filter =====
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const posts = document.querySelectorAll('.post');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const category = btn.dataset.category;
-        posts.forEach(post => {
-          post.style.display = (category === 'all' || post.dataset.category === category) ? 'block' : 'none';
-        });
-        setupPagination(); // update pagination
-      });
-    });
-
-    // ===== Pagination =====
-    const paginationContainer = document.querySelector('.pagination');
-    const postsPerPage = 2;
-    let currentPage = 1;
-
-    function setupPagination() {
-      const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
-      const visiblePosts = Array.from(posts).filter(post =>
-        activeCategory === 'all' || post.dataset.category === activeCategory
-      );
-
-      const totalPages = Math.ceil(visiblePosts.length / postsPerPage);
-      paginationContainer.innerHTML = '';
-
-      // Show posts for current page
-      visiblePosts.forEach((post, index) => {
-        post.style.display = (index >= (currentPage-1)*postsPerPage && index < currentPage*postsPerPage) ? 'block' : 'none';
-      });
-
-      // Create page buttons
-      for(let i=1; i<=totalPages; i++){
-        const btn = document.createElement('button');
-        btn.innerText = i;
-        btn.classList.add('page-btn');
-        if(i === currentPage) btn.classList.add('active');
-        btn.addEventListener('click', () => { currentPage = i; setupPagination(); });
-        paginationContainer.appendChild(btn);
-      }
-    }
-
-    setupPagination();
-  </script>
 </body>
 </html>
+
