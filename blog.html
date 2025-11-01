@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About — HealthyHer</title>
+<title>Blog — HealthyHer</title>
 <style>
   /* ==== Reset & Base ==== */
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -11,7 +11,7 @@
     height: 100%;
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    background: url('https://images.unsplash.com/photo-1526401281623-33c13fa6f1b1?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -52,25 +52,30 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
     padding: 2rem 1.5rem;
     width: 100%;
     max-width: 900px;
+    overflow-x: hidden;
   }
   h1 { font-size: 3rem; color: #00d4ff; margin-bottom: 1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
-  p { color: #f0f0f0; max-width: 700px; margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8; }
+  p { color: #f0f0f0; max-width: 700px; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8; }
 
   .section-separator { height: 2px; width: 80px; margin: 1rem auto 2rem; background: linear-gradient(to right, #00d4ff, #00ffea); border-radius: 2px; }
 
-  .team {
-    background: rgba(0,0,0,0.6); padding: 2rem; border-radius: 12px; margin-bottom: 3rem; box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  .blog-post {
+    background: rgba(0,0,0,0.6);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    text-align: left;
+    width: 100%;
   }
-  .team h2 { color: #00d4ff; margin-bottom: 0.5rem; }
-  .team ul { list-style: none; }
-  .team li { padding: 0.5rem 0; font-weight: 500; border-bottom: 1px dashed rgba(255,255,255,0.3); }
-  .team li:last-child { border-bottom: none; }
+  .blog-post h2 { color: #00d4ff; margin-bottom: 0.5rem; }
+  .blog-post p { margin-bottom: 1rem; }
 
   .btn {
     display: inline-block; padding: 0.6rem 1.2rem; margin-top: 1rem;
@@ -98,7 +103,7 @@
     .nav-toggle { display: block; }
     h1 { font-size: 2.2rem; }
     p { font-size: 1rem; }
-    .team { padding: 1.5rem; }
+    .blog-post { padding: 1.5rem; }
   }
 </style>
 </head>
@@ -110,28 +115,34 @@
     <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <nav id="main-nav" class="main-nav">
       <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="blog.html" class="active">Blog</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
 
 <main class="container">
-  <h1>About HealthyHer</h1>
+  <h1>Our Blog</h1>
   <div class="section-separator"></div>
-  <p>HealthyHer is dedicated to providing practical health, fitness, and lifestyle guidance for everyone. Our mission is to help people make informed decisions and live a healthier, more balanced life.</p>
 
-  <section class="team">
-    <h2>Our Team</h2>
-    <div class="section-separator"></div>
-    <ul>
-      <li><strong>Imam</strong> — Content Writer & Fitness Coach</li>
-      <li><strong>Sarah</strong> — Nutrition Expert</li>
-      <li><strong>David</strong> — Lifestyle Blogger</li>
-    </ul>
-    <a href="contact.html" class="btn">Contact Our Team</a>
-  </section>
+  <div class="blog-post">
+    <h2>5 Tips for a Healthier Lifestyle</h2>
+    <p>Discover simple yet effective ways to maintain a healthy lifestyle through nutrition, exercise, and mindfulness.</p>
+    <a href="#" class="btn">Read More</a>
+  </div>
+
+  <div class="blog-post">
+    <h2>Understanding Nutrition Basics</h2>
+    <p>Learn about essential nutrients, balanced diets, and how to make healthier food choices every day.</p>
+    <a href="#" class="btn">Read More</a>
+  </div>
+
+  <div class="blog-post">
+    <h2>Daily Fitness Routines at Home</h2>
+    <p>Simple home exercises to improve strength, flexibility, and overall well-being without a gym membership.</p>
+    <a href="#" class="btn">Read More</a>
+  </div>
 
   <aside class="ad-box">
     <div class="ad-sample">Ad space — replace with your ad code</div>
@@ -152,3 +163,4 @@
 
 </body>
 </html>
+
