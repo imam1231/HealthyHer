@@ -12,15 +12,13 @@
       font-family: "Poppins", Arial, sans-serif;
       color: #333;
       line-height: 1.6;
-      /* 🌿 Background Theme */
       background: linear-gradient(135deg, #dffaf4, #ffeaf2);
       background-attachment: fixed;
       background-size: cover;
       background-repeat: no-repeat;
     }
 
-    a { color: #e67ba2; text-decoration: none; transition: 0.3s; }
-    a:hover { color: #bf5c86; }
+    a { text-decoration: none; transition: 0.3s; }
 
     .container { width: 90%; max-width: 1200px; margin: auto; }
 
@@ -42,10 +40,33 @@
       color: #4eb7a8;
     }
 
-    .main-nav { display: flex; gap: 1.5rem; }
-    .main-nav a { color: #444; font-weight: 500; }
-    .main-nav a.active { color: #e67ba2; border-bottom: 2px solid #e67ba2; padding-bottom: 2px; }
+    /* === Navbar Buttons === */
+    .main-nav {
+      display: flex; gap: 1rem;
+    }
+    .main-nav a {
+      color: #444;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background: transparent;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .main-nav a:hover {
+      background: #4eb7a8;
+      color: #fff;
+      border-color: #4eb7a8;
+      box-shadow: 0 2px 5px rgba(78,183,168,0.3);
+    }
+    .main-nav a.active {
+      background: #e67ba2;
+      color: #fff;
+      border-color: #e67ba2;
+      box-shadow: 0 2px 5px rgba(230,123,162,0.3);
+    }
 
+    /* === Mobile Menu === */
     .nav-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; }
     @media (max-width:768px){
       .nav-toggle { display: block; }
@@ -57,6 +78,11 @@
         padding: 1rem 0;
       }
       .main-nav.active { display: flex; }
+      .main-nav a {
+        display: block;
+        width: 80%;
+        margin: 0.3rem auto;
+      }
     }
 
     /* === Hero === */
@@ -79,7 +105,7 @@
       font-size: 1.8rem;
     }
 
-    /* === Cards === */
+    /* === Featured Articles === */
     .featured {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
