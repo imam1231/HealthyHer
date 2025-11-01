@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — HealthyHer</title>
+  <meta name="description" content="HealthyHer: Women’s health, wellness guides, recipes and lifestyle tips focused on fitness and holistic wellbeing.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -13,8 +14,8 @@
       font-family: 'Inter', system-ui, sans-serif;
     }
 
-    * {margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-    html, body {height:100%;width:100%;}
+    * {margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth;}
+    html, body {height:100%; width:100%;}
     body {
       display:flex;
       flex-direction:column;
@@ -25,13 +26,12 @@
 
     .overlay {
       flex:1;
+      width:100%;
+      min-height:100vh;
+      background: rgba(255,255,255,0.92);
       display:flex;
       flex-direction:column;
-      justify-content:flex-start;
       align-items:center;
-      min-height:100vh;
-      width:100%;
-      background: rgba(255,255,255,0.92);
       overflow-y:auto;
       padding-bottom:40px;
     }
@@ -56,61 +56,69 @@
       z-index:100;
     }
 
-    .brand {display:flex;align-items:center;gap:12px;}
+    .brand {display:flex; align-items:center; gap:12px;}
     .logo {
-      width:50px;height:50px;border-radius:12px;
+      width:50px; height:50px; border-radius:12px;
       background: linear-gradient(135deg,var(--accent),var(--accent-2));
-      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-weight:700; font-size:18px;
     }
 
-    nav a {margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600;transition:0.3s;}
+    nav a {margin-left:18px; color:var(--muted); text-decoration:none; font-weight:600; transition:0.3s;}
     nav a:hover {color:var(--accent);}
+    nav a[aria-current="page"] {color:var(--accent);}
 
-    main {flex:1;width:100%;}
+    main {flex:1; width:100%; display:flex; flex-direction:column; gap:50px;}
 
     .hero {
-      background:#fff;padding:60px;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,0.1);
-      text-align:center;margin-bottom:40px;
+      background:#fff; padding:60px; border-radius:16px;
+      box-shadow:0 8px 24px rgba(15,23,42,0.1);
+      text-align:center;
+      position:relative;
     }
 
-    .hero h1 {font-size:40px;color:var(--accent);font-weight:800;}
-    .hero p {margin-top:20px;color:var(--muted);max-width:800px;margin:auto;font-size:17px;}
+    .hero h1 {font-size:44px; color:var(--accent); font-weight:800; margin-bottom:20px;}
+    .hero p {color:var(--muted); max-width:800px; margin:auto; font-size:17px; line-height:1.7;}
 
-    .stats {display:flex;justify-content:center;gap:24px;margin-top:24px;flex-wrap:wrap;}
-    .stat {background:#f1f5f9;padding:18px 22px;border-radius:10px;min-width:140px;text-align:center;transition:transform 0.3s;}
+    .stats {display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-top:30px;}
+    .stat {background:#f1f5f9; padding:20px 25px; border-radius:10px; text-align:center; transition:transform 0.3s;}
     .stat:hover{transform:scale(1.05);}
+    .stat div:first-child {font-weight:700; font-size:22px;}
+    .stat div:last-child {color:var(--muted); margin-top:5px;}
 
-    .grid {display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:50px;}
-    .card {background:#fff;padding:28px;border-radius:14px;box-shadow:0 8px 24px rgba(15,23,42,0.08);transition:transform 0.3s;}
+    .grid {display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:30px;}
+    .card {background:#fff; padding:30px; border-radius:14px; box-shadow:0 8px 24px rgba(15,23,42,0.08); transition:transform 0.3s;}
     .card:hover {transform:translateY(-5px);}
-
-    .team-list {display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:20px;}
-    .member {display:flex;align-items:center;gap:12px;}
-    .avatar {width:70px;height:70px;border-radius:12px;background:#e6eef0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;}
-
-    .cta {display:inline-block;padding:12px 20px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;margin-top:20px;transition:0.3s;}
+    .card h2 {color:var(--accent); margin-bottom:15px;}
+    .card p, .card ul, .card ol {color:var(--muted); line-height:1.6; margin-top:10px;}
+    .card ul, .card ol {margin-left:20px; margin-top:10px;}
+    .cta {display:inline-block; padding:12px 20px; border-radius:10px; background:var(--accent); color:#fff; font-weight:700; text-decoration:none; margin-top:20px; transition:0.3s;}
     .cta:hover{background:var(--accent-2);}
 
+    .team {margin-top:40px;}
+    .team h2 {color:var(--accent); text-align:center; margin-bottom:20px;}
+    .team-list {display:flex; gap:20px; flex-wrap:wrap; justify-content:center;}
+    .member {display:flex; align-items:center; gap:15px; background:#fff; padding:15px 20px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.06);}
+    .avatar {width:70px; height:70px; border-radius:12px; background:#e6eef0; display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:700;}
+
+    /* Ad Placeholder Styles */
+    .ad-box {margin:40px auto; width:100%; max-width:728px; height:90px; background:#e6eef0; display:flex; align-items:center; justify-content:center; border-radius:12px; font-weight:700; color:#6b7280;}
+    .ad-square {margin:40px auto; width:300px; height:250px; background:#e6eef0; display:flex; align-items:center; justify-content:center; border-radius:12px; font-weight:700; color:#6b7280;}
+
     footer {
-      width:100%;
-      text-align:center;
-      color:#334155;
-      font-size:15px;
-      padding:20px 0;
-      background: rgba(255,255,255,0.85);
-      border-top:1px solid rgba(0,0,0,0.05);
-      backdrop-filter:blur(5px);
-      flex-shrink:0;
+      width:100%; text-align:center; color:#334155; font-size:15px; padding:20px 0;
+      background: rgba(255,255,255,0.85); border-top:1px solid rgba(0,0,0,0.05); backdrop-filter:blur(5px); flex-shrink:0;
     }
 
-    @media(max-width:800px){
+    @media(max-width:900px){
       .grid{grid-template-columns:1fr;}
       .hero{padding:40px 20px;}
-      .stats{flex-direction:column;align-items:center;}
+      .stats{flex-direction:column; align-items:center;}
+      .team-list{flex-direction:column; align-items:center;}
+      .ad-box, .ad-square{width:100%; height:auto; padding:20px;}
     }
   </style>
 </head>
-
 <body>
   <div class="overlay">
     <div class="container">
@@ -123,40 +131,50 @@
           </div>
         </div>
         <nav>
-          <a href="indix.html">Home</a>
-          <a href="blog.html">Blog</a>
-          <a href="about.html" aria-current="page">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="/">Home</a>
+          <a href="/blog.html">Blog</a>
+          <a href="/about.html" aria-current="page">About</a>
+          <a href="/contact.html">Contact</a>
         </nav>
       </header>
 
       <main>
+        <!-- Hero Section -->
         <section class="hero">
           <h1>About HealthyHer</h1>
-          <p>HealthyHer is built for women in the USA who want to take control of their health and wellbeing. Our mission is to provide science-backed, easy-to-follow guides on fitness, nutrition, and mental health — empowering women to live stronger, healthier, and more confident lives.</p>
-          <div class="stats">
-            <div class="stat"><div style="font-weight:700;font-size:20px">250+</div><div style="color:var(--muted)">Articles</div></div>
-            <div class="stat"><div style="font-weight:700;font-size:20px">45K</div><div style="color:var(--muted)">Monthly Readers</div></div>
-            <div class="stat"><div style="font-weight:700;font-size:20px">99%</div><div style="color:var(--muted)">Reader Satisfaction</div></div>
-          </div>
+          <p>HealthyHer is designed for women in the USA who want to take control of their health and wellbeing. We provide science-backed, easy-to-follow guides on fitness, nutrition, and mental health — empowering women to live stronger, healthier, and more confident lives.</p>
         </section>
 
+        <!-- Ad placeholder after hero -->
+        <div class="ad-box">Advertisement</div>
+
+        <!-- Stats Section -->
+        <div class="stats">
+          <div class="stat"><div>250+</div><div>Articles</div></div>
+          <div class="stat"><div>45K</div><div>Monthly Readers</div></div>
+          <div class="stat"><div>99%</div><div>Reader Satisfaction</div></div>
+        </div>
+
+        <!-- Ad placeholder after stats -->
+        <div class="ad-square">Advertisement</div>
+
+        <!-- Mission & Values Section -->
         <section class="grid">
           <div class="card">
             <h2>Our Mission</h2>
-            <p style="color:var(--muted)">To make healthy living simple, practical, and enjoyable for every woman in the USA. We combine reliable information, expert advice, and real-life success stories to help you stay consistent and motivated.</p>
-            <ul style="color:var(--muted)">
+            <p>To make healthy living simple, practical, and enjoyable for every woman in the USA. We combine reliable information, expert advice, and real-life success stories to keep you motivated.</p>
+            <ul>
               <li>Evidence-based health content</li>
               <li>Simple and effective fitness plans</li>
               <li>Mind-body balance strategies</li>
             </ul>
-            <p><a class="cta" href="/contact.html">Get in Touch</a></p>
+            <a class="cta" href="/contact.html">Get in Touch</a>
           </div>
           <div class="card">
             <h2>Our Values</h2>
-            <p style="color:var(--muted)">Transparency, accuracy, and empowerment. HealthyHer never uses clickbait — we believe in honest, quality-driven content that truly helps women thrive.</p>
-            <h3 style="margin-top:14px">How We Work</h3>
-            <ol style="color:var(--muted)">
+            <p>Transparency, accuracy, and empowerment. HealthyHer never uses clickbait — we focus on honest, quality-driven content that helps women thrive.</p>
+            <h3>How We Work</h3>
+            <ol>
               <li>Create and review content based on research</li>
               <li>Edit and fact-check every article</li>
               <li>Update regularly based on reader feedback</li>
@@ -164,7 +182,11 @@
           </div>
         </section>
 
-        <section class="card" style="margin-top:40px;">
+        <!-- Ad placeholder after mission section -->
+        <div class="ad-box">Advertisement</div>
+
+        <!-- Team Section -->
+        <section class="team">
           <h2>Meet Our Team</h2>
           <div class="team-list">
             <div class="member"><div class="avatar">AR</div><div><div style="font-weight:600">Amanda Ross</div><div style="color:var(--muted);font-size:14px">Founder & Wellness Coach</div></div></div>
@@ -181,6 +203,3 @@
   </footer>
 </body>
 </html>
-
-
-
