@@ -1,21 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HealthyHer — Home</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* === Reset === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      color: #334;
+      background-color: #f8faf9;
+      line-height: 1.6;
+    }
+
+    a { color: #e67ba2; text-decoration: none; transition: 0.3s; }
+    a:hover { color: #bf5c86; }
+
+    .container { width: 90%; max-width: 1200px; margin: auto; }
+
+    /* === Header === */
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    .brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #4eb7a8;
+    }
+
+    .main-nav { display: flex; gap: 1.5rem; }
+    .main-nav a { color: #444; font-weight: 500; }
+    .main-nav a.active { color: #e67ba2; border-bottom: 2px solid #e67ba2; padding-bottom: 2px; }
+
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; }
+    @media (max-width:768px){
+      .nav-toggle { display: block; }
+      .main-nav {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        position: absolute;
+        top: 65px; left: 0; right: 0;
+        background: #fff;
+        border-top: 1px solid #eee;
+        padding: 1rem 0;
+      }
+      .main-nav.active { display: flex; }
+    }
+
+    /* === Hero === */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(135deg, #d4f7ee, #fff);
+      border-radius: 10px;
+      margin-top: 2rem;
+    }
+    .hero h1 { color: #4eb7a8; font-size: 2.4rem; margin-bottom: 1rem; }
+    .hero p { color: #555; max-width: 600px; margin: auto; }
+
+    /* === Section Title === */
+    h2.section-title {
+      text-align: center;
+      color: #e67ba2;
+      margin: 3rem 0 1rem;
+      font-size: 1.8rem;
+    }
+
+    /* === Featured Articles === */
+    .featured {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-5px); }
+    .feature-card img { width: 100%; height: 200px; object-fit: cover; }
+    .feature-card .content { padding: 1.2rem; }
+    .feature-card h3 { color: #4eb7a8; margin-bottom: 0.5rem; }
+
+    .btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: #e67ba2;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #bf5c86; }
+
+    /* === Tips === */
+    .tips {
+      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 1rem;
+    }
+    .tip {
+      background: #fff;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid #4eb7a8;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      width: 280px;
+    }
+
+    /* === Categories === */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .cat {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .cat:hover { transform: translateY(-4px); }
+    .cat h4 { color: #e67ba2; margin-bottom: 0.5rem; }
+
+    /* === Stories === */
+    .stories {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 1rem;
+    }
+    .story {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      max-width: 350px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .story h4 { color: #4eb7a8; margin-bottom: 0.5rem; }
+
+    /* === Trending === */
+    .trending ul {
+      list-style: none;
+      max-width: 600px;
+      margin: auto;
+    }
+    .trending li {
+      background: #fff;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      border-left: 4px solid #e67ba2;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    /* === Newsletter === */
+    .newsletter {
+      text-align: center;
+      background: linear-gradient(135deg, #d4f7ee, #ffe8f0);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 3rem 0;
+    }
+    .newsletter h2 { color: #e67ba2; }
+    .newsletter p { margin-bottom: 1rem; color: #444; }
+    .newsletter input {
+      padding: 0.6rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 250px;
+    }
+    .newsletter button {
+      background: #4eb7a8;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .newsletter button:hover { background: #3fa092; }
+
+    /* === Footer === */
+    .site-footer {
+      background: #4eb7a8;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #fff;
+      margin-top: 3rem;
+    }
+
+    /* === Fade Animation === */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s forwards;
+    }
+    @keyframes fadeIn { to {opacity: 1; transform: translateY(0);} }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html">HealthyHer</a>
-      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <a class="brand" href="#">HealthyHer</a>
+      <button id="nav-toggle" class="nav-toggle">☰</button>
       <nav id="main-nav" class="main-nav">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
+        <a href="#" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
       </nav>
     </div>
   </header>
@@ -23,40 +231,93 @@
   <main class="container">
     <section class="hero fade-section">
       <h1>Health, Fitness & Lifestyle Tips</h1>
-      <p>Daily health guides, workouts, recipes & motivation for your lifestyle.</p>
+      <p>Daily wellness guides, workouts, nutrition, and motivation crafted for women everywhere.</p>
     </section>
 
-    <section class="content-grid fade-section">
-      <article class="card fade-section">
-        <h2>New Article: Healthy Diet Tips</h2>
-        <p>Quick summary — read full blog for details.</p>
-        <a class="btn" href="blog.html">Read More</a>
-      </article>
-
-      <aside class="ad-box fade-section">
-        <div class="ad-sample">Ad space — replace with ad code</div>
-      </aside>
+    <h2 class="section-title">Featured Articles</h2>
+    <section class="featured fade-section">
+      <div class="feature-card">
+        <img src="https://source.unsplash.com/600x400/?healthy-woman" alt="">
+        <div class="content">
+          <h3>10 Everyday Habits for a Healthier You</h3>
+          <p>Simple steps to boost your energy and mood — starting today.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img src="https://source.unsplash.com/600x400/?fitness-woman" alt="">
+        <div class="content">
+          <h3>How to Balance Work, Life & Wellness</h3>
+          <p>Find harmony in your daily routine and stay mindful.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img src="https://source.unsplash.com/600x400/?heart-health" alt="">
+        <div class="content">
+          <h3>The Ultimate Guide to Women’s Heart Health in 2025</h3>
+          <p>Understand, prevent, and take charge of your heart wellness.</p>
+          <a class="btn" href="#">Read More</a>
+        </div>
+      </div>
     </section>
 
-    <section class="latest-posts fade-section">
-      <h3>Latest Posts</h3>
+    <h2 class="section-title">Health & Wellness Tips</h2>
+    <section class="tips fade-section">
+      <div class="tip">🧘‍♀️ 5-Minute Morning Yoga Routine</div>
+      <div class="tip">🍎 Healthy Snack Ideas for Busy Moms</div>
+      <div class="tip">💧 How to Stay Hydrated During Winter</div>
+    </section>
+
+    <h2 class="section-title">Explore by Category</h2>
+    <section class="categories fade-section">
+      <div class="cat"><h4>Nutrition & Diet 🥗</h4><p>Best Superfoods for Women Over 30</p></div>
+      <div class="cat"><h4>Fitness & Exercise 💪</h4><p>Beginner-Friendly Home Workouts</p></div>
+      <div class="cat"><h4>Mental Health 🧠</h4><p>Dealing with Anxiety Naturally</p></div>
+      <div class="cat"><h4>Women’s Health ❤️</h4><p>Understanding Hormonal Changes After 40</p></div>
+    </section>
+
+    <h2 class="section-title">HealthyHer Heroes</h2>
+    <section class="stories fade-section">
+      <div class="story">
+        <h4>Meet Sarah</h4>
+        <p>How she overcame burnout and rediscovered balance through mindfulness and movement.</p>
+      </div>
+      <div class="story">
+        <h4>Meet Lisa</h4>
+        <p>A busy mom’s journey to self-care and healthy living — one small step at a time.</p>
+      </div>
+    </section>
+
+    <h2 class="section-title">Trending Now</h2>
+    <section class="trending fade-section">
       <ul>
-        <li><a href="blog.html">How to Optimize Your Morning Routine</a></li>
-        <li><a href="blog.html">Easy Home Workouts</a></li>
+        <li><a href="#">Top 5 Fall Foods for Immunity</a></li>
+        <li><a href="#">New Research: Sleep and Women’s Hormones</a></li>
+        <li><a href="#">Simple Ways to Boost Daily Energy</a></li>
       </ul>
+    </section>
+
+    <section class="newsletter fade-section">
+      <h2>Join the HealthyHer Community 💌</h2>
+      <p>Get weekly wellness tips straight to your inbox!</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 HealthyHer — All rights reserved.</p>
-      <div class="footer-ad">
-        <div class="ad-sample">Footer Ad space</div>
-      </div>
-    </div>
+    <p>© 2025 HealthyHer — All rights reserved.</p>
   </footer>
 
-  <script src="assets/scripts.js"></script>
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => nav.classList.toggle('active'));
+  </script>
 </body>
 </html>
+
 
