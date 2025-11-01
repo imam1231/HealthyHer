@@ -1,171 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blog — HealthyHer</title>
-<style>
-/* ==== Reset & Base ==== */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body {
-  height: 100%;
-  width: 100%;
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-}
-body::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.55);
-  z-index: -1;
-}
-a { text-decoration: none; color: inherit; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HealthyHer | Blog</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
 
-/* ==== Header ==== */
-.site-header {
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  position: sticky; top: 0; z-index: 100;
-  padding: 1rem 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-.site-header .container {
-  width: 100%;
-  max-width: 1100px;
-  margin: auto;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0 1.5rem;
-}
-.brand { font-weight: 700; font-size: 1.6rem; color: #00d4ff; }
-.main-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-.main-nav a { color: #fff; font-weight: 500; transition: color 0.3s ease; position: relative; }
-.main-nav a.active::after { content: ''; display: block; width: 100%; height: 2px; background: #00d4ff; margin-top: 3px; border-radius: 2px; }
-.main-nav a:hover { color: #00d4ff; }
-.nav-toggle { display: none; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: #fff; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to right, #f9fafb, #f1f5f9);
+      background-image: url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #1e293b;
+      overflow-x: hidden;
+    }
 
-/* ==== Main ==== */
-main.container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-  padding: 2rem 1rem;
-  width: 100%;
-  max-width: 1200px;
-}
-h1 { font-size: 3rem; color: #00d4ff; margin-bottom: 1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
-p { color: #f0f0f0; max-width: 100%; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8; }
+    header {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 30px 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.section-separator { height: 2px; width: 80px; margin: 1rem auto 2rem; background: linear-gradient(to right, #00d4ff, #00ffea); border-radius: 2px; }
+    header h1 {
+      font-size: 2.3rem;
+      color: #1e40af;
+      font-weight: 700;
+    }
 
-.blog-post {
-  background: rgba(0,0,0,0.6);
-  padding: 2rem;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  text-align: left;
-  width: 100%;
-}
-.blog-post h2 { color: #00d4ff; margin-bottom: 0.5rem; }
-.blog-post p { margin-bottom: 1rem; }
+    header p {
+      color: #475569;
+      margin-top: 5px;
+      font-size: 1rem;
+    }
 
-.btn {
-  display: inline-block; padding: 0.6rem 1.2rem; margin-top: 1rem;
-  font-weight: 600; color: #fff; background: #00d4ff;
-  border-radius: 25px; transition: background 0.3s ease, transform 0.2s ease;
-}
-.btn:hover { background: #00ffea; transform: translateY(-2px); }
+    .filter-menu {
+      text-align: center;
+      margin-top: 20px;
+    }
 
-.ad-box {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px dashed #00d4ff; border-radius: 8px;
-  padding: 1.5rem; margin: 2rem 0; font-style: italic; color: #ddd;
-}
+    .filter-menu button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      margin: 5px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
 
-.site-footer {
-  background: rgba(0,0,0,0.7); color: #fff;
-  text-align: center; padding: 2rem 1rem;
-}
-.footer-ad { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.8; }
+    .filter-menu button:hover,
+    .filter-menu button.active {
+      background: #1d4ed8;
+      transform: scale(1.05);
+    }
 
-/* ==== Responsive ==== */
-@media (max-width: 1024px) {
-  main.container { padding: 2rem; }
-}
+    .blog-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding: 50px;
+      width: 100%;
+      flex: 1;
+    }
 
-@media (max-width: 768px) {
-  .main-nav { display: none; flex-direction: column; background: rgba(0,0,0,0.9); position: absolute; top: 70px; right: 0; width: 200px; padding: 1rem 0; }
-  .main-nav.active { display: flex; }
-  .nav-toggle { display: block; }
-  h1 { font-size: 2.2rem; }
-  p { font-size: 1rem; }
-  .blog-post { padding: 1.5rem; }
-}
-</style>
+    .blog-card {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 25px;
+    }
+
+    .blog-content h3 {
+      font-size: 1.4rem;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .blog-content p {
+      font-size: 1rem;
+      color: #475569;
+      margin-bottom: 15px;
+    }
+
+    .read-more {
+      text-decoration: none;
+      color: white;
+      background: #2563eb;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: background 0.3s ease;
+    }
+
+    .read-more:hover {
+      background: #1d4ed8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.85);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(5px);
+    }
+
+    footer p {
+      color: #334155;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.9rem;
+      }
+      .blog-container {
+        padding: 25px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">HealthyHer</a>
-    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
-    <nav id="main-nav" class="main-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="blog.html" class="active">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
+  <header>
+    <h1>HealthyHer Blog</h1>
+    <p>Wellness • Fitness • Nutrition • Lifestyle</p>
 
-<main class="container">
-  <h1>Our Blog</h1>
-  <div class="section-separator"></div>
+    <div class="filter-menu">
+      <button class="active" onclick="filterPosts('all')">All</button>
+      <button onclick="filterPosts('fitness')">Fitness</button>
+      <button onclick="filterPosts('nutrition')">Nutrition</button>
+      <button onclick="filterPosts('lifestyle')">Lifestyle</button>
+    </div>
+  </header>
 
-  <div class="blog-post">
-    <h2>5 Tips for a Healthier Lifestyle</h2>
-    <p>Discover simple yet effective ways to maintain a healthy lifestyle through nutrition, exercise, and mindfulness.</p>
-    <a href="#" class="btn">Read More</a>
-  </div>
+  <section class="blog-container">
+    <div class="blog-card fitness">
+      <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=800&q=80" alt="Yoga">
+      <div class="blog-content">
+        <h3>Morning Yoga for Energy Boost</h3>
+        <p>Start your day with mindful movement and gentle stretches to power up your body.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
 
-  <div class="blog-post">
-    <h2>Understanding Nutrition Basics</h2>
-    <p>Learn about essential nutrients, balanced diets, and how to make healthier food choices every day.</p>
-    <a href="#" class="btn">Read More</a>
-  </div>
+    <div class="blog-card nutrition">
+      <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=800&q=80" alt="Healthy Breakfast">
+      <div class="blog-content">
+        <h3>5 Breakfasts That Fuel Your Morning</h3>
+        <p>Discover superfoods that keep you full and energetic all day long.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
 
-  <div class="blog-post">
-    <h2>Daily Fitness Routines at Home</h2>
-    <p>Simple home exercises to improve strength, flexibility, and overall well-being without a gym membership.</p>
-    <a href="#" class="btn">Read More</a>
-  </div>
+    <div class="blog-card lifestyle">
+      <img src="https://images.unsplash.com/photo-1526403227361-eba3f7d0212d?auto=format&fit=crop&w=800&q=80" alt="Mental Health">
+      <div class="blog-content">
+        <h3>Simple Steps for a Balanced Life</h3>
+        <p>Healthy habits that make your daily routine calm, focused, and joyful.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
 
-  <aside class="ad-box">
-    <div class="ad-sample">Ad space — replace with your ad code</div>
-  </aside>
-</main>
+    <div class="blog-card fitness">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80" alt="Workout">
+      <div class="blog-content">
+        <h3>At-Home Workouts That Actually Work</h3>
+        <p>No gym? No problem! Try these easy home exercises to stay in shape.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
+  </section>
 
-<footer class="site-footer">
-  <p>© 2025 HealthyHer — Empowering Health & Happiness</p>
-  <div class="footer-ad">Footer Ad Space</div>
-</footer>
+  <footer>
+    <p>© 2025 <strong>HealthyHer</strong> — Empowering women’s wellness across the USA.</p>
+  </footer>
 
-<script>
-// Mobile menu toggle
-const navToggle = document.getElementById('nav-toggle');
-const mainNav = document.getElementById('main-nav');
-navToggle.addEventListener('click', () => { mainNav.classList.toggle('active'); });
-</script>
+  <script>
+    function filterPosts(category) {
+      let cards = document.querySelectorAll('.blog-card');
+      let buttons = document.querySelectorAll('.filter-menu button');
 
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
+
