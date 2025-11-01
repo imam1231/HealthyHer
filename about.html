@@ -24,6 +24,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     html, body {
@@ -37,8 +38,10 @@
       flex-direction: column;
       justify-content: space-between;
       background: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      background-attachment: fixed;
       color: #0f172a;
       line-height: 1.6;
+      transition: background 1s ease;
     }
 
     .overlay {
@@ -47,6 +50,13 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      min-height: 100vh;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .container {
@@ -61,6 +71,13 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 30px;
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 10px 20px;
+      z-index: 999;
     }
 
     .brand {
@@ -87,11 +104,12 @@
       color: var(--muted);
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.2s;
+      transition: color 0.2s, transform 0.3s;
     }
 
     nav a:hover {
       color: var(--accent);
+      transform: scale(1.05);
     }
 
     .hero {
@@ -101,6 +119,7 @@
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
       text-align: center;
       margin-bottom: 40px;
+      animation: fadeIn 1.2s ease-in-out;
     }
 
     .hero h1 {
@@ -130,12 +149,18 @@
       border-radius: 10px;
       min-width: 140px;
       text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-5px);
     }
 
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
+      margin-bottom: 50px;
     }
 
     .card {
@@ -143,6 +168,12 @@
       padding: 28px;
       border-radius: 14px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
     }
 
     .team-list {
@@ -232,7 +263,7 @@
         </div>
         <nav>
           <a href="/">Home</a>
-          <a href="/blog">Blog</a>
+          <a href="/blog.html">Blog</a>
           <a href="/about.html" aria-current="page">About</a>
           <a href="/contact.html">Contact</a>
         </nav>
