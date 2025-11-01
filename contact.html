@@ -1,287 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — HealthyHer</title>
-  <style>
-    /* ===== Reset & Base ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      line-height: 1.6;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.55);
-      z-index: -1;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — HealthyHer</title>
+<style>
+  /* ===== Reset ===== */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; font-family: 'Poppins', sans-serif; color:#fff; }
 
-    /* ===== Header ===== */
-    .site-header {
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 1rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .site-header .container {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 1.5rem;
-    }
-    .brand { font-weight: 700; font-size: 1.6rem; color: #00d4ff; }
-    .main-nav { display: flex; gap: 1.5rem; }
-    .main-nav a { color: #fff; font-weight: 500; transition: color 0.3s ease; }
-    .main-nav a.active::after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: #00d4ff;
-      margin-top: 3px;
-      border-radius: 2px;
-    }
-    .main-nav a:hover { color: #00d4ff; }
-    .nav-toggle { display: none; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: #fff; }
+  /* ===== Body & Background ===== */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+    background-size: cover;
+  }
+  body::before {
+    content:'';
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.55);
+    z-index:-1;
+  }
 
-    /* ===== Main ===== */
-    main.container {
-      max-width: 700px;
-      margin: 5rem auto 3rem;
-      padding: 0 1.5rem;
-    }
-    h1 { font-size: 3rem; color: #00d4ff; text-align: center; margin-bottom: 1rem; text-shadow: 0 2px 6px rgba(0,0,0,0.5); opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
-    p { font-size: 1.1rem; text-align: center; margin-bottom: 2rem; opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
+  /* ===== Header ===== */
+  .site-header {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    padding:1rem 1.5rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .site-header .brand { font-size:1.6rem; font-weight:700; color:#00d4ff; }
+  .main-nav { display:flex; gap:1.5rem; }
+  .main-nav a { color:#fff; text-decoration:none; font-weight:500; transition:0.3s; }
+  .main-nav a.active::after {
+    content:'';
+    display:block;
+    width:100%;
+    height:2px;
+    background:#00d4ff;
+    margin-top:3px;
+    border-radius:2px;
+  }
+  .main-nav a:hover { color:#00d4ff; }
+  .nav-toggle { display:none; font-size:1.5rem; background:none; border:none; cursor:pointer; color:#fff; }
 
-    /* ===== Form Styling ===== */
-    .contact-form form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-      background: rgba(0,0,0,0.65);
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      position: relative;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: 1s ease;
-    }
+  /* ===== Main ===== */
+  main {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:2rem 1rem;
+    width:100%;
+  }
+  h1 { font-size:3rem; color:#00d4ff; margin-bottom:1rem; text-align:center; text-shadow:0 2px 6px rgba(0,0,0,0.5); }
+  p { font-size:1.1rem; text-align:center; margin-bottom:2rem; }
 
-    /* ===== Animated Labels ===== */
-    .form-group {
-      position: relative;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 1rem 1rem 1rem 0.8rem;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-    .form-group label {
-      position: absolute;
-      left: 0.9rem;
-      top: 1rem;
-      color: #ccc;
-      font-size: 1rem;
-      pointer-events: none;
-      transition: 0.3s ease all;
-      background: transparent;
-    }
-    .form-group input:focus + label,
-    .form-group input:not(:placeholder-shown) + label,
-    .form-group textarea:focus + label,
-    .form-group textarea:not(:placeholder-shown) + label {
-      top: -0.5rem;
-      left: 0.5rem;
-      font-size: 0.8rem;
-      color: #00d4ff;
-      background: rgba(0,0,0,0.65);
-      padding: 0 0.2rem;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      box-shadow: 0 0 8px #00d4ff;
-      background: rgba(255,255,255,0.15);
-    }
+  /* ===== Contact Form ===== */
+  .contact-form {
+    width:100%;
+    max-width:600px;
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+  }
+  .contact-form form {
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+    background: rgba(0,0,0,0.65);
+    padding:2rem;
+    border-radius:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.5);
+  }
+  .form-group { position:relative; }
+  .form-group input, .form-group textarea {
+    width:100%;
+    padding:1rem 0.8rem;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    background: rgba(255,255,255,0.1);
+    color:#fff;
+    font-size:1rem;
+  }
+  .form-group label {
+    position:absolute;
+    left:0.9rem;
+    top:1rem;
+    color:#ccc;
+    font-size:1rem;
+    pointer-events:none;
+    transition:0.3s all;
+    background:transparent;
+  }
+  .form-group input:focus + label,
+  .form-group input:not(:placeholder-shown) + label,
+  .form-group textarea:focus + label,
+  .form-group textarea:not(:placeholder-shown) + label {
+    top:-0.5rem;
+    left:0.5rem;
+    font-size:0.8rem;
+    color:#00d4ff;
+    background: rgba(0,0,0,0.65);
+    padding:0 0.2rem;
+  }
+  .contact-form button {
+    background:#00d4ff;
+    color:#000;
+    font-weight:700;
+    padding:0.8rem;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+  }
+  .contact-form button:hover { background:#00a1cc; }
 
-    .contact-form button {
-      background: #00d4ff;
-      color: #000;
-      font-weight: 700;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .contact-form button:hover { background: #00a1cc; }
+  /* ===== Ad Box ===== */
+  .ad-box {
+    margin-top:1.5rem;
+    padding:1rem;
+    background: rgba(255,255,255,0.1);
+    border:2px dashed #00d4ff;
+    border-radius:8px;
+    text-align:center;
+    color:#ddd;
+    font-style:italic;
+  }
 
-    /* ===== Ad Box ===== */
-    .ad-box {
-      background: rgba(255,255,255,0.1);
-      border: 2px dashed #00d4ff;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-top: 2rem;
-      text-align: center;
-      font-style: italic;
-      color: #ddd;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: 1s ease;
-    }
-    .ad-box:hover { background: rgba(255,255,255,0.15); }
+  /* ===== Footer ===== */
+  .site-footer {
+    background: rgba(0,0,0,0.7);
+    text-align:center;
+    padding:2rem 1rem;
+  }
 
-    /* ===== Footer ===== */
-    .site-footer {
-      background: rgba(0,0,0,0.7);
-      color: #fff;
-      text-align: center;
-      padding: 2rem 1rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: 1s ease;
-    }
-
-    /* ===== Success Overlay ===== */
-    .success-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #00d4ff;
-      font-size: 2rem;
-      font-weight: 700;
-      text-align: center;
-      z-index: 999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-    .success-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* ===== Fade-in Animation ===== */
-    .fade-in { opacity: 1 !important; transform: translateY(0) !important; }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      .main-nav {
-        display: none;
-        flex-direction: column;
-        background: rgba(0,0,0,0.9);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;
-        padding: 1rem 0;
-      }
-      .main-nav.active { display: flex; }
-      .nav-toggle { display: block; }
-      h1 { font-size: 2.2rem; }
-    }
-  </style>
+  /* ===== Responsive ===== */
+  @media(max-width:768px){
+    h1 { font-size:2.2rem; }
+    .main-nav { display:none; flex-direction:column; background: rgba(0,0,0,0.9); position:absolute; top:70px; right:0; width:200px; padding:1rem 0; }
+    .main-nav.active { display:flex; }
+    .nav-toggle { display:block; }
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a class="brand" href="index.html">HealthyHer</a>
-      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
-      <nav id="main-nav" class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html" class="active">Contact</a>
-      </nav>
-    </div>
-  </header>
+<header class="site-header">
+  <a class="brand" href="index.html">HealthyHer</a>
+  <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+  <nav id="main-nav" class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+</header>
 
-  <main class="container">
-    <h1 class="fade-section">Contact Us</h1>
-    <p class="fade-section">Have questions or suggestions? Fill out the form below and we'll get back to you!</p>
+<main>
+  <h1>Contact Us</h1>
+  <p>Have questions or suggestions? Fill out the form below and we'll get back to you!</p>
 
-    <section class="contact-form">
-      <form id="contactForm" method="POST" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec">
-        <div class="form-group">
-          <input type="text" id="name" name="name" placeholder=" " required>
-          <label for="name">Name</label>
-        </div>
-        <div class="form-group">
-          <input type="email" id="email" name="email" placeholder=" " required>
-          <label for="email">Email</label>
-        </div>
-        <div class="form-group">
-          <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
-          <label for="message">Message</label>
-        </div>
-        <button type="submit">Send Message</button>
-      </form>
+  <section class="contact-form">
+    <form id="contactForm" method="POST" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec">
+      <div class="form-group">
+        <input type="text" id="name" name="name" placeholder=" " required>
+        <label for="name">Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" name="email" placeholder=" " required>
+        <label for="email">Email</label>
+      </div>
+      <div class="form-group">
+        <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+        <label for="message">Message</label>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
 
-      <aside class="ad-box fade-section">
-        <div class="ad-sample">Ad space — replace with ad code</div>
-      </aside>
-    </section>
-  </main>
+    <aside class="ad-box">
+      Ad space — replace with ad code
+    </aside>
+  </section>
+</main>
 
-  <footer class="site-footer fade-section">
-    <p>© 2025 HealthyHer</p>
-    <div class="footer-ad">Footer Ad space</div>
-  </footer>
+<footer class="site-footer">
+  © 2025 HealthyHer
+</footer>
 
-  <div class="success-overlay" id="successOverlay">Message Sent!</div>
+<script>
+  // Mobile menu toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const mainNav = document.getElementById('main-nav');
+  navToggle.addEventListener('click',()=>{ mainNav.classList.toggle('active'); });
 
-  <script>
-    // ===== Mobile Menu Toggle =====
-    const navToggle = document.getElementById('nav-toggle');
-    const mainNav = document.getElementById('main-nav');
-    navToggle.addEventListener('click', () => { mainNav.classList.toggle('active'); });
-
-    // ===== Form Submission =====
-    const form = document.getElementById('contactForm');
-    const overlay = document.getElementById('successOverlay');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      overlay.classList.add('active');
-      form.reset();
-      setTimeout(() => { overlay.classList.remove('active'); }, 2000);
-    });
-
-    // ===== Scroll Fade-in Animation =====
-    const faders = document.querySelectorAll('.fade-section, .contact-form form, .ad-box, .site-footer');
-    const appearOptions = { threshold: 0.2 };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('fade-in');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
-  </script>
+  // Form submission (fake)
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    alert("Message Sent!");
+    form.reset();
+  });
+</script>
 </body>
 </html>
+
 
