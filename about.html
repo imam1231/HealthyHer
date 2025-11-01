@@ -1,147 +1,131 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blog — HealthyHer</title>
-
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-html, body { height:100%; font-family:'Poppins',sans-serif; scroll-behavior:smooth; color:#fff; }
-body {
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
-  background-size: cover;
-  display:flex; flex-direction:column;
-}
-body::before {
-  content:'';
-  position:fixed; top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.55);
-  z-index:-1;
-}
-a { text-decoration:none; color:inherit; }
-
-/* Header */
-.site-header {
-  background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
-  position: sticky; top:0; z-index:100; padding:1rem 0;
-}
-.site-header .container {
-  max-width:1100px; margin:auto;
-  display:flex; justify-content:space-between; align-items:center;
-  padding:0 1.5rem;
-}
-.brand { font-weight:700; font-size:1.6rem; color:#00d4ff; }
-.main-nav { display:flex; gap:1.5rem; }
-.main-nav a { color:#fff; font-weight:500; transition:0.3s; position:relative; }
-.main-nav a.active::after { content:''; display:block; width:100%; height:2px; background:#00d4ff; margin-top:3px; border-radius:2px; }
-.main-nav a:hover { color:#00d4ff; }
-.nav-toggle { display:none; font-size:1.5rem; background:none; border:none; cursor:pointer; color:#fff; }
-
-/* Main Fullscreen */
-main.container {
-  flex:1; display:flex; flex-direction:column;
-  justify-content:center; align-items:center;
-  text-align:center; padding:2rem 1.5rem; width:100%;
-  max-width:900px; margin:0 auto;
-}
-h1 { font-size:3rem; color:#00d4ff; margin-bottom:1rem; text-shadow:0 2px 6px rgba(0,0,0,0.5); opacity:0; transform:translateY(30px); transition:all 1s ease; }
-p { color:#f0f0f0; font-size:1.1rem; line-height:1.8; margin-bottom:2rem; opacity:0; transform:translateY(20px); transition:all 1s ease 0.2s; }
-.section-separator { height:2px; width:80px; margin:1rem auto 2rem; background:linear-gradient(to right,#00d4ff,#00ffea); border-radius:2px; opacity:0; transform:scaleX(0); transition:all 0.8s ease; }
-
-/* Blog Posts */
-.blog-post {
-  background: rgba(0,0,0,0.6); padding:2rem; border-radius:12px; margin-bottom:2rem; width:100%;
-  box-shadow:0 8px 20px rgba(0,0,0,0.5); opacity:0; transform:translateY(20px); transition:all 1s ease;
-}
-.blog-post:hover { transform:translateY(-5px); box-shadow:0 12px 24px rgba(0,0,0,0.6); }
-.blog-post h2 { color:#00d4ff; margin-bottom:0.5rem; }
-.blog-post p { margin-bottom:1rem; font-size:1rem; color:#f0f0f0; }
-
-/* Button */
-.btn { display:inline-block; padding:0.6rem 1.2rem; margin-top:1rem; font-weight:600; color:#fff; background:#00d4ff; border-radius:25px; transition: background 0.3s ease, transform 0.2s ease; }
-.btn:hover { background:#00ffea; transform:translateY(-2px); }
-
-/* Footer */
-.site-footer { background: rgba(0,0,0,0.7); color:#fff; text-align:center; padding:2rem 1rem; opacity:0; transform:translateY(20px); transition:all 1s ease; }
-.footer-ad { margin-top:0.8rem; font-size:0.9rem; opacity:0.8; }
-
-/* Responsive */
-@media(max-width:768px){
-  .main-nav { display:none; flex-direction:column; background: rgba(0,0,0,0.9); position:absolute; top:70px; right:0; width:200px; padding:1rem 0; }
-  .main-nav.active { display:flex; }
-  .nav-toggle { display:block; }
-  h1 { font-size:2.2rem; }
-  p { font-size:1rem; }
-  .blog-post { padding:1.5rem; }
-}
-
-/* Animation */
-.fade-in { opacity:1 !important; transform:translateY(0) scaleX(1) !important; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — HealthyHer</title>
+  <meta name="description" content="HealthyHer: women's health, wellness guides, recipes and lifestyle tips focused on fitness and holistic wellbeing.">
+  <meta name="keywords" content="HealthyHer, women's health, wellness, fitness, healthy recipes, lifestyle">
+  <meta property="og:title" content="About — HealthyHer">
+  <meta property="og:description" content="HealthyHer: women's health, wellness guides, recipes and lifestyle tips.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#0f766e;--accent-2:#06b6d4;--muted:#6b7280;--bg:#f8fafc;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.5;font-family:Inter,system-ui,Arial}
+    .container{max-width:1100px;margin:0 auto;padding:32px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr;gap:22px;background:#fff;padding:28px;border-radius:14px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+    .hero h1{margin:0;font-size:28px}
+    .hero p{margin:8px 0;color:var(--muted)}
+    .stats{display:flex;gap:14px;margin-top:10px;flex-wrap:wrap}
+    .stat{background:#f1f5f9;padding:12px;border-radius:10px;min-width:140px}
+    .section{margin-top:28px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 14px rgba(15,23,42,0.04)}
+    .team-list{display:flex;gap:12px;flex-wrap:wrap}
+    .member{display:flex;gap:12px;align-items:center}
+    .avatar{width:64px;height:64px;border-radius:12px;background:#e6eef0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    footer{margin-top:36px;padding:24px 0;color:var(--muted);font-size:14px}
+    .cta{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
+    @media (max-width:800px){.grid{grid-template-columns:1fr}.stats{flex-direction:column}.hero{padding:18px}}
+  </style>
 </head>
 <body>
-
-<header class="site-header">
   <div class="container">
-    <a class="brand" href="index.html">HealthyHer</a>
-    <button id="nav-toggle" class="nav-toggle">☰</button>
-    <nav id="main-nav" class="main-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="blog.html" class="active">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <header>
+      <div class="brand">
+        <div class="logo">HH</div>
+        <div>
+          <div style="font-weight:700">HealthyHer</div>
+          <div style="font-size:13px;color:var(--muted)">Women's health & wellness</div>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/about.html" aria-current="page">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>About HealthyHer</h1>
+          <p>HealthyHer is built for women in the USA who want to take control of their health and wellbeing. Our mission is to provide science-backed, easy-to-follow guides on fitness, nutrition, and mental health — empowering women to live stronger, healthier, and more confident lives.</p>
+          <div class="stats">
+            <div class="stat"><div style="font-weight:700;font-size:18px">250+</div><div style="color:var(--muted)">Articles</div></div>
+            <div class="stat"><div style="font-weight:700;font-size:18px">45K</div><div style="color:var(--muted)">Monthly Readers</div></div>
+            <div class="stat"><div style="font-weight:700;font-size:18px">99%</div><div style="color:var(--muted)">Reader Satisfaction</div></div>
+          </div>
+        </div>
+        <div style="align-self:center">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='220'><rect rx='14' width='100%' height='100%' fill='%23eef7f6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%230f766e' font-family='Arial' font-size='20'>HealthyHer</text></svg>" alt="HealthyHer illustration" style="max-width:100%;border-radius:10px">
+        </div>
+      </section>
+
+      <section class="section grid">
+        <div class="card">
+          <h2>Our Mission</h2>
+          <p style="color:var(--muted)">To make healthy living simple, practical, and enjoyable for every woman in the USA. We combine reliable information, expert advice, and real-life success stories to help you stay consistent and motivated.</p>
+          <ul style="color:var(--muted)">
+            <li>Evidence-based health content</li>
+            <li>Simple and effective fitness plans</li>
+            <li>Mind-body balance strategies</li>
+          </ul>
+          <p><a class="cta" href="/contact.html">Get in Touch</a></p>
+        </div>
+
+        <div class="card">
+          <h2>Our Values</h2>
+          <p style="color:var(--muted)">Transparency, accuracy, and empowerment. HealthyHer never uses clickbait — we believe in honest, quality-driven content that truly helps women thrive.</p>
+          <h3 style="margin-top:14px">How We Work</h3>
+          <ol style="color:var(--muted)">
+            <li>Create and review content based on research</li>
+            <li>Edit and fact-check every article</li>
+            <li>Update regularly based on reader feedback</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section card">
+        <h2>Meet Our Team</h2>
+        <div class="team-list" style="margin-top:12px">
+          <div class="member">
+            <div class="avatar">AR</div>
+            <div>
+              <div style="font-weight:600">Amanda Ross</div>
+              <div style="color:var(--muted);font-size:14px">Founder & Wellness Coach</div>
+            </div>
+          </div>
+          <div class="member">
+            <div class="avatar">JM</div>
+            <div>
+              <div style="font-weight:600">Jessica Miller</div>
+              <div style="color:var(--muted);font-size:14px">Nutrition Specialist</div>
+            </div>
+          </div>
+          <div class="member">
+            <div class="avatar">KR</div>
+            <div>
+              <div style="font-weight:600">Kelly Roberts</div>
+              <div style="color:var(--muted);font-size:14px">Fitness Editor</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>© 2025 HealthyHer — Empowering women’s wellness across the USA.</p>
+      </footer>
+    </main>
   </div>
-</header>
-
-<main class="container">
-  <h1 class="animate">Our Blog</h1>
-  <div class="section-separator animate"></div>
-  <p class="animate">Stay updated with the latest tips, guides, and stories on health, fitness, and lifestyle from our experts.</p>
-
-  <section class="blog-post animate">
-    <h2>5 Tips for a Healthier Morning Routine</h2>
-    <p>Start your day right with these 5 practical tips that improve energy, focus, and wellbeing.</p>
-    <a href="#" class="btn">Read More</a>
-  </section>
-
-  <section class="blog-post animate">
-    <h2>Nutrition Myths Busted</h2>
-    <p>Learn the truth behind common nutrition myths and how to make better choices for your health.</p>
-    <a href="#" class="btn">Read More</a>
-  </section>
-
-  <section class="blog-post animate">
-    <h2>Workouts You Can Do at Home</h2>
-    <p>No gym? No problem! These exercises will help you stay fit in the comfort of your home.</p>
-    <a href="#" class="btn">Read More</a>
-  </section>
-</main>
-
-<footer class="site-footer animate">
-  <p>© 2025 HealthyHer — Empowering Health & Happiness</p>
-  <div class="footer-ad">Footer Ad Space</div>
-</footer>
-
-<script>
-const navToggle = document.getElementById('nav-toggle');
-const mainNav = document.getElementById('main-nav');
-navToggle.addEventListener('click', ()=> mainNav.classList.toggle('active'));
-
-const faders = document.querySelectorAll('.animate');
-const appearOptions = { threshold:0.2, rootMargin:"0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer){
-  entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
-    entry.target.classList.add('fade-in');
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-faders.forEach(fader => appearOnScroll.observe(fader));
-</script>
-
 </body>
 </html>
-
